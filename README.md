@@ -22,11 +22,17 @@ https://github.com/yuchesc/html-boilerplate/archive/master.zip
 > npm run build
 ```
 
+### Tasks
+
+* clean: Clean dist
+* build: Build and minify all to dist
+* build-debug: Build all to dist
+* watch: Build and minify all to dist, and watch src
+* watch-debug: Build all to dist, and watch src
 
 ## Directory Tree
 
 ```
-├── build           -- output for coverage, temporary files.
 ├── dist            -- output for production.
 └── src             -- HTML, robots.txt, favicon.ico, and so on.
     └── assets      -- contains resoure directories.

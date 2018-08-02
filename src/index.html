@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./assets/style/index.css"/>
-    <title></title>
+    <%- include('assets/ejs/header.ejs', {title: "Hello"}) %>
 </head>
 <body>
-<%- include('assets/ejs/footer.ejs') %>
+<div id="main">
+    <h3>Vue.js and axios boilerplate.</h3>
+    <p class="message message-active" v-cloak>{{message}}</p>
+    <p v-cloak>Count: {{counter}} <button @click="count">Count Up</button></p>
+</div>
+
+<%- include('assets/ejs/vendor.ejs') %>
+<script src="assets/script/index.js" defer></script>
 </body>
 </html>
