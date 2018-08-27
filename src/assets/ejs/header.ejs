@@ -1,5 +1,11 @@
     <meta charset="UTF-8">
+    <% if (cssInject) { %>
+    <style>
+    <%- include('../../../dist/assets/style/bundle.css') %>
+    </style>
+    <% } else { %>
     <link rel="stylesheet" href="./assets/style/bundle.css"/>
+    <% } %>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= title %></title>

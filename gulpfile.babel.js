@@ -14,9 +14,12 @@ import uglify from 'gulp-uglify'; // minify JavaScript
 import ejs from 'gulp-ejs'; // template for html
 import minifyHtml from 'gulp-minify-html';
 
+const cssInject = true;
+
 const paths = {
     src: path.relative('.', 'src'),
-    dist: 'dist'
+    dist: 'dist',
+    bundleCss: 'dist/assets/style/bundle.css'
 };
 
 function toSrc(target) {
@@ -73,12 +76,18 @@ export function plumberWithNotify() {
     });
 }
 
-function html() {
-    return gulp.src(src.html, { base: paths.src})
+function html(callback) {
+    gulp.src(src.html, { base: paths.src})
         .pipe(plumberWithNotify())
-        .pipe(ejs())
+        .pipe(ejs({cssInject: cssInject}))
         .pipe(gulpIf(isRelease, minifyHtml({empty: true})))
-        .pipe(gulp.dest(paths.dist));
+        .pipe(gulp.dest(paths.dist))
+        .on('end', () => {
+            if (cssInject) {
+                del([paths.bundleCss]);
+            }
+            callback();
+        });
 }
 
 function script(cb) {
@@ -106,11 +115,11 @@ function style() {
 export function watchFiles() {
     gulp.watch(src.html, gulp.series(html, reloadBrowser));
     gulp.watch(src.script, gulp.series(script, reloadBrowser));
-    gulp.watch(src.styleWatch, gulp.series(style, reloadBrowser));
+    gulp.watch(src.styleWatch, gulp.series(style, html, reloadBrowser));
     gulp.watch(src.resources, gulp.series(copy, reloadBrowser));
 }
 
-export const build = gulp.series(clean, gulp.parallel(copyDeps, style, script, html, copy));
+export const build = gulp.series(clean, gulp.parallel(copyDeps, style, script, copy), html);
 
 export const watch = gulp.series(build, gulp.parallel(browser, watchFiles));
 
