@@ -113,7 +113,7 @@ function style() {
 }
 
 export function watchFiles() {
-    gulp.watch(src.html, gulp.series(html, reloadBrowser));
+    gulp.watch(src.html, gulp.series(style, html, reloadBrowser));
     gulp.watch(src.script, gulp.series(script, reloadBrowser));
     gulp.watch(src.styleWatch, gulp.series(style, html, reloadBrowser));
     gulp.watch(src.resources, gulp.series(copy, reloadBrowser));
