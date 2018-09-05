@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('assets/ejs/header.ejs', {title: "Form examples"}) %>
+</head>
+<body>
+<div id="forms">
+    <h3>Forms with Vue.js</h3>
+    <form class="default-form-style">
+        <fieldset>
+            <legend>Examples</legend>
+            <ul>
+                <li>
+                    <span>Username <abbr>*</abbr></span>
+                    <div class="component">
+                        <input type="text" v-model="username" class="box-field" v-focus required />
+                        <hr class="underline" />
+                    </div>
+                </li>
+                <li>
+                    <span>Password <abbr>*</abbr></span>
+                    <div class="component">
+                        <input type="password" v-model="password" class="box-field" required />
+                        <hr class="underline" />
+                    </div>
+                </li>
+                <li>
+                    <span>Toggle</span>
+                    <div class="component">
+                        <input type="checkbox" v-model="toggle" id="toggle" class="toggle toggle-round-flat" />
+                        <label for="toggle"></label>
+                    </div>
+                </li>
+                <li>
+                    <span>Checkbox</span>
+                    <div class="component">
+                        <input type="checkbox" v-model="check" id="check" class="checkbox" />
+                        <label for="check">チェックする</label>
+                    </div>
+                </li>
+                <li>
+                    <span>Radio</span>
+                    <div class="component">
+                        <input type="radio" v-model="radio" value="A" id="radioA" class="checkbox">
+                        <label for="radioA">A</label>
+                        <input type="radio" v-model="radio" value="B" id="radioB" class="checkbox">
+                        <label for="radioB">B</label>
+                    </div>
+                </li>
+            </ul>
+            <!-- TODO div is better than ul....? -->
+            <div>
+                <div>
+                    <span>Select</span>
+                    <div class="component">
+                        <select v-model="select">
+                            <option value=""></option>
+                            <option v-for="o in options" v-value="o.key">{{o.value}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="component-textarea">
+                    <span>Textarea</span>
+                    <div class="component">
+                        <textarea v-model="textarea"></textarea>
+                    </div>
+                </div>
+                <div class="form-button-box">
+                    <button class="button">Submit</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div>
+        <ul v-cloak>
+            <li>{{username}}</li>
+            <li>{{toggle}}</li>
+            <li>{{check}}</li>
+            <li>{{radio}}</li>
+            <li>{{select}}</li>
+            <li><pre>{{textarea}}</pre></li>
+        </ul>
+    </div>
+</div>
+
+<%- include('assets/ejs/vendor.ejs') %>
+<script src="assets/script/forms.js" defer></script>
+</body>
+</html>
