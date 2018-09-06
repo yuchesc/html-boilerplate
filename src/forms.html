@@ -9,78 +9,65 @@
     <form class="default-form-style">
         <fieldset>
             <legend>Examples</legend>
-            <ul>
-                <li>
+            <div>
+                <div class="column">
                     <span>Username <abbr>*</abbr></span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <input type="text" v-model="username" class="box-field" v-focus required />
                         <hr class="underline" />
                     </div>
-                </li>
-                <li>
+                </div>
+                <div class="column">
                     <span>Password <abbr>*</abbr></span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <input type="password" v-model="password" class="box-field" required />
                         <hr class="underline" />
                     </div>
-                </li>
-                <li>
+                </div>
+                <div class="column">
                     <span>Toggle</span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <input type="checkbox" v-model="toggle" id="toggle" class="toggle toggle-round-flat" />
                         <label for="toggle"></label>
                     </div>
-                </li>
-                <li>
+                </div>
+                <div class="column">
                     <span>Checkbox</span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <input type="checkbox" v-model="check" id="check" class="checkbox" />
                         <label for="check">チェックする</label>
                     </div>
-                </li>
-                <li>
+                </div>
+                <div class="column">
                     <span>Radio</span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <input type="radio" v-model="radio" value="A" id="radioA" class="checkbox">
                         <label for="radioA">A</label>
                         <input type="radio" v-model="radio" value="B" id="radioB" class="checkbox">
                         <label for="radioB">B</label>
                     </div>
-                </li>
-            </ul>
-            <!-- TODO div is better than ul....? -->
-            <div>
-                <div>
+                </div>
+                <div class="column">
                     <span>Select</span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <select v-model="select">
                             <option value=""></option>
                             <option v-for="o in options" v-value="o.key">{{o.value}}</option>
                         </select>
                     </div>
                 </div>
-                <div class="component-textarea">
+                <div class="column">
                     <span>Textarea</span>
-                    <div class="component">
+                    <div class="component" v-cloak>
                         <textarea v-model="textarea"></textarea>
                     </div>
                 </div>
-                <div class="form-button-box">
+                <div class="column form-button-box" v-cloak>
                     <button class="button">Submit</button>
                 </div>
             </div>
         </fieldset>
     </form>
-    <div>
-        <ul v-cloak>
-            <li>{{username}}</li>
-            <li>{{toggle}}</li>
-            <li>{{check}}</li>
-            <li>{{radio}}</li>
-            <li>{{select}}</li>
-            <li><pre>{{textarea}}</pre></li>
-        </ul>
-    </div>
 </div>
 
 <%- include('assets/ejs/vendor.ejs') %>
