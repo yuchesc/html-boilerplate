@@ -1,0 +1,46 @@
+toggle-width = toggle-size * 2
+
+.toggle
+  position absolute
+  margin-left -9999px
+  visibility hidden
+  & + label
+    display block
+    position relative
+    cursor pointer
+    outline none
+    user-select none
+
+.toggle-round-flat + label
+  padding toggle-padding
+  width toggle-width
+  height toggle-size
+  background-color toggle-off-color
+  border-radius toggle-size
+  transition background 0.4s
+  &:before, &:after
+    display block
+    position absolute
+    content ""
+  &:before
+    top toggle-border-width
+    left toggle-border-width
+    bottom toggle-border-width
+    right toggle-border-width
+    background-color white
+    border-radius toggle-size
+    transition background 0.4s
+  &:after
+    top 4px
+    left 4px
+    bottom 4px
+    width toggle-size - toggle-border-width - toggle-padding
+    background-color toggle-off-color
+    border-radius toggle-size
+    transition margin 0.4s, background 0.4s
+
+.toggle-round-flat:checked + label
+  background-color toggle-on-color
+  &:after
+    margin-left toggle-width - toggle-size
+    background-color toggle-on-color
