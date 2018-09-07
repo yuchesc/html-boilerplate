@@ -28,6 +28,7 @@ function toSrc(target) {
 
 const src = {
     deps: [
+        'node_modules/underscore/underscore-min.js',
         'node_modules/axios/dist/axios.min.js',
         'node_modules/vue/dist/vue.min.js'
     ],

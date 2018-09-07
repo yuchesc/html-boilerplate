@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('assets/ejs/header.ejs', {title: "Login"}) %>
+</head>
+<body>
+<div id="login">
+    <h3>Login</h3>
+    <p class="message message-active" v-cloak>{{message}}</p>
+    <form class="default-form-style" v-on:submit.prevent>
+        <fieldset>
+            <legend>Login</legend>
+            <div>
+                <div class="column">
+                    <span>Username <abbr>*</abbr></span>
+                    <div class="component" v-cloak>
+                        <input type="text" v-model="username" class="box-field" v-focus required />
+                        <hr class="underline" />
+                    </div>
+                </div>
+                <div class="column">
+                    <span>Password <abbr>*</abbr></span>
+                    <div class="component" v-cloak>
+                        <input type="password" v-model="password" class="box-field" required />
+                        <hr class="underline" />
+                    </div>
+                </div>
+            </div>
+            <div class="column form-button-box" v-cloak>
+                <button class="button" @click="login()">Login</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<%- include('assets/ejs/vendor.ejs') %>
+<script src="assets/script/login.js" defer></script>
+</body>
+</html>
