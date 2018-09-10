@@ -5,86 +5,90 @@ focus-border()
   transition all 0.8s
   border-color underline-active-color
 
+.form-box-field
+  color form-font-color
+  font-size form-font-size
+  width 100%
+  border 1px solid underline-inactive-color
+  border-radius 0.5rem
+  outline 0
+  padding 0.1rem
+  &:focus
+    focus-border()
+
+.form-textarea
+  color form-font-color
+  display block
+  font-size form-font-size
+  border 1px solid underline-inactive-color
+  border-radius 0.5rem
+  box-sizing border-box
+  padding 0.5rem
+  width 100%
+  height 8rem
+  outline 0
+  &:focus
+    focus-border()
+
 .default-form-style
+  background white
+  border-radius 10px
+  box-shadow 0 0 10px #333333
+  width 90%
+  max-width 600px
+  margin 0 auto
   color form-font-color
   font-size form-font-size
   fieldset
-    border-style solid
-    border-width 1px
-    border-color #c1b02a
-    border-radius 10px
+    border-style none
   legend
     margin-left 1rem
     border-style none
+    text-align center
   .column
     padding 0.5rem
     text-align center
-    span
+    &-label
       border-bottom 1px dashed underline-inactive-color
       text-align right
-      width 10rem
+      width 30%
       margin 0 2rem 0 3rem
       display inline-block
       vertical-align top
-  .box-field
-    color form-font-color
-    font-size form-font-size
-    width 100%
-    border none
-    outline 0
-    &:focus + .underline
-      focus-border()
-  .underline
-    display block
-    width 100%
-    margin 0
-    border 1px solid underline-inactive-color
-  .component
-    text-align left
-    width 20rem
-    display inline-block
-  textarea
-    color form-font-color
-    display block
-    font-size form-font-size
-    border 1px solid underline-inactive-color
-    border-radius 1rem
-    box-sizing border-box
-    padding 0.5rem
-    width 100%
-    height 8rem
-    outline 0
-    &:focus
-      transition all 1s
-      border 1px solid underline-active-color
-  select
-    color form-font-color
-    font-size form-font-size
-    width 100%
-    outline 0
-  .checkbox
-    position relative
-    box-sizing border-box
-    width form-checkbox-size
-    height form-checkbox-size
-    content ""
-    border 1px solid underline-active-color
-    border-radius form-checkbox-size
+    &-component
+      text-align left
+      width 50%
+      display inline-block
+
+.form-select
+  color form-font-color
+  font-size form-font-size
+  width 100%
+  outline 0
+
+.form-checkbox
+  position relative
+  box-sizing border-box
+  width form-checkbox-size
+  height form-checkbox-size
+  content ""
+  border 1px solid underline-active-color
+  border-radius form-checkbox-size
+  vertical-align top
+  cursor pointer
+  & + label
     vertical-align top
+    focus-border()
     cursor pointer
+  &:checked
+    border-color underline-active-color
     & + label
-      vertical-align top
       focus-border()
-      cursor pointer
-    &:checked
-      border-color underline-active-color
-      & + label
-        focus-border()
-      &:after
-        display block
-        position absolute
-        background underline-active-color
-        content ""
+    &:after
+      display block
+      position absolute
+      background underline-active-color
+      content ""
 
 .form-button-box
   text-align center
@@ -104,13 +108,16 @@ focus-border()
     transition all 0.6s
     background-color underline-active-color
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 750px)
   .default-form-style
+    width 90%
     color form-font-color
     .column
       padding 0.5rem
       text-align center
-      span
+      &-label
         text-align left
         display block
         margin 0 0 1rem 0
+      &-component
+        width 100%

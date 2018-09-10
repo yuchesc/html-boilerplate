@@ -1,25 +1,20 @@
 'use strict';
 
 window.addEventListener('load', function () {
-    Vue.directive('focus', {
-        inserted: function (el) {
-            el.focus();
-        }
-    });
     new Vue({
         el: '#forms',
         data: {
-            options: [
-                {key: 1, value: 'option 1'},
-                {key: 2, value: 'option 2'},
-                {key: 3, value: 'option 3'}
-                ],
+            options: _.map(_.range(5), (i) => {
+                return {key: i, value: `option ${i}`};
+            }),
             username: 'hello',
             password: '',
             toggle: true,
             check: true,
             radio: 'B',
             select: '',
+            date: '',
+            datetime: '',
             textarea: 'hello\nworld'
         },
         methods: {

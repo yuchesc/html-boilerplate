@@ -28,8 +28,12 @@ function toSrc(target) {
 
 const src = {
     deps: [
+        'node_modules/underscore/underscore-min.js',
         'node_modules/axios/dist/axios.min.js',
-        'node_modules/vue/dist/vue.min.js'
+        'node_modules/vue/dist/vue.min.js',
+        'node_modules/luxon/build/global/luxon.js',
+        'node_modules/vue-datetime/dist/vue-datetime.js',
+        'node_modules/vue-datetime/dist/vue-datetime.min.css',
     ],
     resources: [
         toSrc('robots.txt'),
@@ -37,7 +41,8 @@ const src = {
         toSrc('assets/img/*.*'),
         toSrc('assets/vendor/*.*')]
     ,
-    html: [toSrc('*.html'), toSrc('ejs/*.ejs')],
+    html: [toSrc('*.html')],
+    htmlWatch: [toSrc('*.html'), toSrc('assets/ejs/*.ejs')],
     script: toSrc('assets/script/*.js'),
     styleWatch: toSrc('assets/style/*.styl'),
     style: toSrc('assets/style/[^_]*.styl')
@@ -113,7 +118,7 @@ function style() {
 }
 
 export function watchFiles() {
-    gulp.watch(src.html, gulp.series(style, html, reloadBrowser));
+    gulp.watch(src.htmlWatch, gulp.series(style, html, reloadBrowser));
     gulp.watch(src.script, gulp.series(script, reloadBrowser));
     gulp.watch(src.styleWatch, gulp.series(style, html, reloadBrowser));
     gulp.watch(src.resources, gulp.series(copy, reloadBrowser));
