@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <%- include('assets/ejs/vendor.ejs') %>
+    <script src="assets/script/forms.js" defer></script>
     <%- include('assets/ejs/header.ejs', {title: "Form examples"}) %>
 </head>
-<body>
+<body style="background: yellow;">
 <div id="forms">
     <h3>Forms with Vue.js</h3>
     <form class="default-form-style">
@@ -11,55 +13,65 @@
             <legend>Examples</legend>
             <div>
                 <div class="column">
-                    <span>Username <abbr>*</abbr></span>
-                    <div class="component" v-cloak>
-                        <input type="text" v-model="username" class="box-field" v-focus required />
-                        <hr class="underline" />
+                    <span class="column-label">Username <abbr>*</abbr></span>
+                    <div class="column-component" v-cloak>
+                        <input type="text" v-model="username" class="form-box-field" v-focus required />
                     </div>
                 </div>
                 <div class="column">
-                    <span>Password <abbr>*</abbr></span>
-                    <div class="component" v-cloak>
-                        <input type="password" v-model="password" class="box-field" required />
-                        <hr class="underline" />
+                    <span class="column-label">Password <abbr>*</abbr></span>
+                    <div class="column-component" v-cloak>
+                        <input type="password" v-model="password" class="form-box-field" required />
                     </div>
                 </div>
                 <div class="column">
-                    <span>Toggle</span>
-                    <div class="component" v-cloak>
+                    <span class="column-label">Toggle</span>
+                    <div class="column-component" v-cloak>
                         <input type="checkbox" v-model="toggle" id="toggle" class="toggle toggle-round-flat" />
                         <label for="toggle"></label>
                     </div>
                 </div>
                 <div class="column">
-                    <span>Checkbox</span>
-                    <div class="component" v-cloak>
-                        <input type="checkbox" v-model="check" id="check" class="checkbox" />
+                    <span class="column-label">Checkbox</span>
+                    <div class="column-component" v-cloak>
+                        <input type="checkbox" v-model="check" id="check" class="form-checkbox" />
                         <label for="check">チェックする</label>
                     </div>
                 </div>
                 <div class="column">
-                    <span>Radio</span>
-                    <div class="component" v-cloak>
-                        <input type="radio" v-model="radio" value="A" id="radioA" class="checkbox">
+                    <span class="column-label">Radio</span>
+                    <div class="column-component" v-cloak>
+                        <input type="radio" v-model="radio" value="A" id="radioA" class="form-checkbox">
                         <label for="radioA">A</label>
-                        <input type="radio" v-model="radio" value="B" id="radioB" class="checkbox">
+                        <input type="radio" v-model="radio" value="B" id="radioB" class="form-checkbox">
                         <label for="radioB">B</label>
                     </div>
                 </div>
                 <div class="column">
-                    <span>Select</span>
-                    <div class="component" v-cloak>
-                        <select v-model="select">
-                            <option value=""></option>
+                    <span class="column-label">Select</span>
+                    <div class="column-component" v-cloak>
+                        <select v-model="select" class="form-select">
+                            <option value="">Choose</option>
                             <option v-for="o in options" v-value="o.key">{{o.value}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="column">
-                    <span>Textarea</span>
-                    <div class="component" v-cloak>
-                        <textarea v-model="textarea"></textarea>
+                    <span class="column-label">Date</span>
+                    <div class="column-component" v-cloak>
+                        <datetime v-model="date" input-id="date" input-class="form-box-field" format="yyyy/MM/dd" zone="Asia/Tokyo" value-zone="Asia/Tokyo" week-start="7"></datetime>
+                    </div>
+                </div>
+                <div class="column">
+                    <span class="column-label">Date Time</span>
+                    <div class="column-component" v-cloak>
+                        <datetime v-model="datetime" input-id="datetime" input-class="form-box-field" type="datetime" minute-step="5" zone="Asia/Tokyo" value-zone="Asia/Tokyo" week-start="7" format="yyyy/MM/dd HH:mm:ss"></datetime>
+                    </div>
+                </div>
+                <div class="column">
+                    <span class="column-label">Textarea</span>
+                    <div class="column-component" v-cloak>
+                        <textarea v-model="textarea" class="form-textarea"></textarea>
                     </div>
                 </div>
                 <div class="column form-button-box" v-cloak>
@@ -68,9 +80,8 @@
             </div>
         </fieldset>
     </form>
+    <p>{{date}}</p>
+    <p>{{datetime}}</p>
 </div>
-
-<%- include('assets/ejs/vendor.ejs') %>
-<script src="assets/script/forms.js" defer></script>
 </body>
 </html>

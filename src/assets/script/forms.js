@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
             check: true,
             radio: 'B',
             select: '',
+            date: '',
+            datetime: '',
             textarea: 'hello\nworld'
         },
         methods: {
